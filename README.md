@@ -1,5 +1,9 @@
 # desafio-ruby
 
+
+First step: Fazer fork desse projeto e iniciar teu desafio! :)
+
+
 O plano é o seguinte:
 
 
@@ -13,7 +17,7 @@ O plano é o seguinte:
 
 4 - Fazer uma busca indexada por produto utilizando o Elasticsearch (Em termos de layout, você pode remover os filtros que têm no print e adicionar um campo de busca no lugar)
 
-5 - Fazer uma interface administrativa utilizando rails_admin para gerenciar as lojas
+5 - Fazer uma interface administrativa utilizando rails_admin para gerenciar as lojas e respectivos produtos
 
 
 
@@ -62,11 +66,7 @@ Estrutura - Produto
 * Url
 
 
-
-
-
-Inline image 1
-
+![alt text](http://i.imgur.com/O2LaEPd.png)
 
 
 ** Aí você publica essa aplicação em algum lugar (heroku, que seja) e nos envia o link do github pra vermos seu código. Damos um prazo normalmente de 4 dias, e você entrega o que vc conseguir até lá. Blz?
