@@ -20,6 +20,9 @@ O plano é o seguinte:
 5 - Fazer uma interface administrativa utilizando rails_admin para gerenciar as lojas e respectivos produtos
 
 
+Ps.: Caso seja necessário, segue adaptador do kaminari para o mongoid --> https://github.com/kaminari/kaminari-mongoid
+
+
 
 APIs:
 
