@@ -29,6 +29,8 @@ http://www.timex.com.br/api/catalog_system/pub/products/search/
 
 https://www.schumann.com.br/api/catalog_system/pub/products/search/
 
+Paginação: https://www.fossil.com.br/api/catalog_system/pub/products/search?_from=0&_to=49
+
 
 
 Pode criar as três lojas:
