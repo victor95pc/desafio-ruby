@@ -33,7 +33,11 @@ gem 'rails_admin'
 gem 'cancancan'
 gem 'sidekiq'
 gem 'kaminari-mongoid'
-gem "mongoid-enum", github: 'kalinon/mongoid-enum'
+gem 'mongoid-enum', github: 'kalinon/mongoid-enum'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 
 group :development, :test do
   gem 'pry'
