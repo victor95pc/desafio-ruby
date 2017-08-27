@@ -8,6 +8,8 @@ class Product
   field :interest_rate, type: Float
   field :amount, type: Integer
 
+  belongs_to :store
+
   mount_uploader :image, ProductImageUploader
 
   validates_presence_of :name, :image, :price, :number_installments, :amount, :interest_rate
@@ -16,6 +18,7 @@ class Product
     list do
       field :image
       field :name
+      field :store
       field :price do
         formatted_value{ |p| bindings[:view].number_to_currency(bindings[:object].price) }
       end
@@ -32,6 +35,7 @@ class Product
         end
       end
       field :name
+      field :store
       field :price do
         formatted_value{ |p| bindings[:view].number_to_currency(bindings[:object].price) }
       end
@@ -46,6 +50,7 @@ class Product
       field :price
       field :interest_rate
       field :number_installments
+      field :store
       field :amount
       field :image
       field :link, :string

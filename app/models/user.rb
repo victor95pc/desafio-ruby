@@ -14,6 +14,10 @@ class User
     User::PROFILE
   end
 
+  def name
+    email
+  end
+
   rails_admin do
     list do
       field :email
