@@ -4,16 +4,23 @@ class Store
   field :website, type: String
   field :logo_url, type: String
   field :email, type: String
+  field :slug, type: String
   field :on_home_page, type: Boolean, default: false
 
   has_many :products, dependent: :destroy
 
   validates_uniqueness_of :on_home_page, if: :on_home_page?
 
+  before_save :set_slug, if: :name_changed?
+
   accepts_nested_attributes_for :products
 
   def self.store_on_home_page
     find_by(on_home_page: true)
+  end
+
+  def self.by_store_slug(slug)
+    where(slug: slug).first
   end
 
   rails_admin do
@@ -58,5 +65,11 @@ class Store
       field :email,    :string
       field :website,  :string
     end
+  end
+
+  private
+
+  def set_slug
+    self.slug = I18n.transliterate(name).underscore.dasherize
   end
 end
