@@ -36,6 +36,7 @@ gem 'kaminari-mongoid'
 gem 'mongoid-enum', github: 'kalinon/mongoid-enum'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 gem 'http'
+gem 'has_scope'
 
 group :development, :test do
   gem 'pry'
