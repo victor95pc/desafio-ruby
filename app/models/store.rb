@@ -5,11 +5,16 @@ class Store
   field :logo_url, type: String
   field :email, type: String
   field :slug, type: String
+  field :amount_products_to_load, type: Integer
   field :on_home_page, type: Boolean, default: false
 
-  has_many :products, dependent: :destroy
+  has_many :products, dependent: :delete
 
   validates_uniqueness_of :on_home_page, if: :on_home_page?
+
+  validates_presence_of :website, :name, :logo_url, :email
+
+  after_save :reload_products_from_api, if: -> { amount_products_to_load_changed? || website_changed? }
 
   before_save :set_slug, if: :name_changed?
 
@@ -46,6 +51,7 @@ class Store
       field :name
       field :on_home_page
       field :email
+      field :amount_products_to_load
       field :on_home_page
       field :website
     end
@@ -56,6 +62,7 @@ class Store
       field :logo_url, :string
       field :email,    :string
       field :website,  :string
+      field :amount_products_to_load
     end
 
     create do
@@ -64,10 +71,16 @@ class Store
       field :logo_url, :string
       field :email,    :string
       field :website,  :string
+      field :amount_products_to_load
     end
   end
 
   private
+
+  def reload_products_from_api
+    products.delete_all
+    LoadProductsFromApiJob.perform_later(self)
+  end
 
   def set_slug
     self.slug = I18n.transliterate(name).underscore.dasherize

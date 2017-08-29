@@ -38,6 +38,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+gem 'http'
 
 group :development, :test do
   gem 'pry'
