@@ -1,3 +1,20 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.navbar {
+    position: relative;
+    opacity: 0.9;
+}
+.brand {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+}
+
+
+a.log-off, a.log-in {
+  margin-left: 2px;
+}
+
+
+main[role="main"] {
+  margin-top: 60px;
+}

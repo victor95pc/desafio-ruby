@@ -1,19 +1,24 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-inverse">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+<div class="navbar navbar-fixed-top navbar-default">
+    <div class="navbar-inner">
+
+      <% if current_store_logo  %>
+        <a class="brand" style="margin: 0; float: none;" href="#">
+          <%= image_tag current_store_logo, alt: "Brand" %>
+        </a>
+      <% end %>
+
+      <% if controller_name == 'products' %>
+        <%= form_tag request.path, method: :get,  class: 'navbar-form form-inline pull-left' do %>
+          <%= text_field_tag :search, params[:search], placeholder: 'Buscar', class: 'form-control' %>
+          <%= submit_tag "Buscar", class: 'btn btn-primary' %>
+        <% end %>
+      <% end %>
+
+      <% if current_user %>
+        <span class="navbar-text pull-right">Logado como <%= current_user.email %>, <%= link_to "Sair", destroy_user_session_path, method: :delete, class: 'log-off' %> </span>
+      <% else %>
+        <span class="navbar-text pull-right">Não está logado, <%= link_to "Entrar", new_user_session_path, class: 'log-in' %> </span>
+      <% end %>
+
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <%= render 'layouts/navigation_links' %>
-      </ul>
-    </div>
-  </div>
-</nav>
+</div>
