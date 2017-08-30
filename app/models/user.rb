@@ -8,7 +8,11 @@ class User
 
   enum :profile, [ :admin, :store_owner ],  default: nil
 
+  belongs_to :store
+
   validates_presence_of :profile, :email
+
+  validates_presence_of :store, if: :store_owner?
 
   def profile_enum
     User::PROFILE
@@ -22,12 +26,14 @@ class User
     list do
       field :email
       field :profile, :enum
+      field :store
       field :last_sign_in_at
     end
 
     show do
       field :email
       field :profile, :enum
+      field :store
       field :last_sign_in_at
     end
 
@@ -38,6 +44,7 @@ class User
           bindings[:view]._current_user.admin?
         end
       end
+      field :store
       field :password
       field :password_confirmation
     end
@@ -49,6 +56,7 @@ class User
           bindings[:view]._current_user.admin?
         end
       end
+      field :store
       field :password
       field :password_confirmation
     end

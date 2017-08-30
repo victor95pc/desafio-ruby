@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    slug = Store.store_on_home_page.try(:slug)
+    slug = Store.try(:store_on_home_page).try(:slug)
 
     if slug
       redirect_to products_path(slug)
