@@ -6,10 +6,12 @@ class LoadProductsFromApiJob < ApplicationJob
     price:     'items.0.sellers.0.commertialOffer.Price'
   }
 
-  RECORDS_INTERVAL = 1
+  RECORDS_INTERVAL = 40
   queue_as :default
 
-  def perform(store)
+  def perform(store_id)
+    store = Store.find(store_id)
+
     (store.amount_products_to_load / RECORDS_INTERVAL).ceil.times do |page|
       pagination = "_from=#{page*RECORDS_INTERVAL}&_to=#{(page+1)*RECORDS_INTERVAL}"
 
@@ -24,10 +26,13 @@ class LoadProductsFromApiJob < ApplicationJob
         fields_api["number_installments"] = installments.map { |i| i["NumberOfInstallments"] }.max
         fields_api["interest_rate"]       = installments.map { |i| i["InterestRate"] }.max
 
-        binding.pry
-
-        Product.create!({ store: store }.merge(fields_api))
+        Product.where(store: store, link: fields_api["link"]).first_or_create do |p|
+          p.reindex = false
+          p.assign_attributes(fields_api)
+        end
       end
+
+      Product.reindex
     end
   end
 

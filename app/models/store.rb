@@ -79,7 +79,7 @@ class Store
 
   def reload_products_from_api
     products.delete_all
-    LoadProductsFromApiJob.perform_later(self)
+    LoadProductsFromApiJob.perform_later(id.to_s)
   end
 
   def set_slug
