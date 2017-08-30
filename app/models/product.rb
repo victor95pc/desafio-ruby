@@ -76,6 +76,9 @@ class Product
       field :number_installments
       field :image_url, :string
       field :link, :string
+      field :reindex, :hidden do
+        default_value { true }
+      end
     end
   end
 
