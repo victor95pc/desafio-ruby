@@ -37,6 +37,8 @@ gem 'mongoid-enum', github: 'kalinon/mongoid-enum'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 gem 'http'
 gem 'has_scope'
+gem 'kaminari-bootstrap3'
+gem 'rails_admin_rollincode', '~> 1.0'
 
 group :development, :test do
   gem 'pry'
