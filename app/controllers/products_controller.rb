@@ -16,11 +16,11 @@ class ProductsController < ApplicationController
   private
 
   def store_id
-    Store.by_store_slug(params[:store_slug]).try(:id).try(:to_s)
+    Store.by_store_slug(params[:store_slug]).try(:id).try(:to_s) || store_not_found
   end
 
   def check_store_slug_present
-    render_404 if params[:store_slug].blank?
+    store_not_found if params[:store_slug].blank?
   end
 
   def page
@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
     params['search'].present? ? params['search'] : '*'
   end
 
-  def render_404
-    render file: "#{Rails.root}/public/404", layout: false, status: :not_found and return
+  def store_not_found
+    redirect_to(stores_path, alert: 'Loja não encontrada') and return
   end
 end

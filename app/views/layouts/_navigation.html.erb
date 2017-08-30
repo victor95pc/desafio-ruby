@@ -14,6 +14,12 @@
         <% end %>
       <% end %>
 
+      <ul class="nav navbar-nav">
+        <li class="<%= 'active' if controller_name == 'stores' %>">
+          <%= link_to 'Lojas', stores_path %>
+        </li>
+      </ul>
+
       <% if current_user %>
         <span class="navbar-text pull-right">Logado como <%= current_user.email %>, <%= link_to "Sair", destroy_user_session_path, method: :delete, class: 'log-off' %> </span>
       <% else %>

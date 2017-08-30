@@ -1,0 +1,23 @@
+<div class="stores">
+  <% @stores.to_a.in_groups_of(4, false).each do |stores_group| %>
+    <div class="row">
+      <% stores_group.each do |store| %>
+        <div class="col-sm-3 store">
+          <%= link_to products_path(store.slug), target: '_blank' do %>
+            <%= image_tag store.logo_url, class: 'store-logo img-responsive center-block' %>
+
+            <h5 class="store-name">
+              <%= store.name %>
+            </h5>
+
+            <div class="store-website">
+              <span><%= link_to store.website, store.website, target: '_blank' %></span>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= paginate @stores, theme: 'bootstrap' %>
+</div>

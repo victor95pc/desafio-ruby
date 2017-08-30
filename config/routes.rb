@@ -1,5 +1,6 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  resources :stores, only: :index
   resources :products, path: '/store/:store_slug/products', only: :index
   resources :products, only: :index
 
