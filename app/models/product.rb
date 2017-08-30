@@ -30,7 +30,7 @@ class Product
     list do
       field :image_url do
         pretty_value do
-          bindings[:view].tag(:img, { :src => bindings[:object].image_url })
+          bindings[:view].tag(:img, { :src => bindings[:object].image_url, style: 'width:150px' })
         end
       end
       field :name
@@ -46,7 +46,7 @@ class Product
     show do
       field :image_url do
         pretty_value do
-          bindings[:view].tag(:img, { :src => bindings[:object].image_url })
+          bindings[:view].tag(:img, { :src => bindings[:object].image_url, style: 'width:300px' })
         end
       end
       field :name

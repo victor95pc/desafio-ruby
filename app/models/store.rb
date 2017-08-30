@@ -32,7 +32,7 @@ class Store
     list do
       field :logo_url do
         pretty_value do
-          bindings[:view].tag(:img, { :src => bindings[:object].logo_url })
+          bindings[:view].tag(:img, { :src => bindings[:object].logo_url, style: 'width:150px' })
         end
       end
 
@@ -44,7 +44,7 @@ class Store
     show do
       field :logo_url do
         pretty_value do
-          bindings[:view].tag(:img, { :src => bindings[:object].logo_url })
+          bindings[:view].tag(:img, { :src => bindings[:object].logo_url, style: 'width:300px' })
         end
       end
 
