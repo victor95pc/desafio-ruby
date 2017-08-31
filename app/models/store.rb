@@ -21,7 +21,7 @@ class Store
   accepts_nested_attributes_for :products
 
   def self.store_on_home_page
-    find_by(on_home_page: true)
+    where(on_home_page: true).first
   end
 
   def self.by_store_slug(slug)
