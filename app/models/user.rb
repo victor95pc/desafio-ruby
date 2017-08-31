@@ -8,7 +8,7 @@ class User
 
   enum :profile, [ :admin, :store_owner ],  default: nil
 
-  belongs_to :store
+  belongs_to :store, optional: true
 
   validates_presence_of :profile, :email
 
